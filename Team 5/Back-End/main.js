@@ -8,6 +8,7 @@ function writeToJson(jsonFile, data){
     var tempObj = {
         hold: []
     };
-
+    
+    
 
 }
