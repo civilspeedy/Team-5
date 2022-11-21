@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        
+.headerFont {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 75px;
+    transition: 0.3s;
+    cursor: pointer;
+    
+
+}
+
+.pageNameFont {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 40px;
+    
+}
+
+
+* {
+    box-sizing:border-box;
+    margin: 0;
+    padding: 7;
+    background-color: rgb(240, 240, 240);
+
+}
+
+li, a {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 500;
+    font-size: 35px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    
+    
+}
+
+button {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 500;
+    font-size: 35px;
+    color: rgb(253, 253, 253);
+    text-decoration: none;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0%;
+    
+}
+    
+.pillNav li {
+    display: inline-block;
+    padding: 10px 50px;
+    
+}
+
+.pillNav li a {
+    transition: all 0.3s ease-in-out 0s;
+    
+}
+
+.pillNav li a:hover {
+    color: rgb(255, 255, 255);
+    width: 50px;
+    height: 100px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 75px;
+
+    
+}
+
+button {
+    padding: 9px 25px;
+    background-color:rgb(0, 0, 0) ;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+button:hover {
+    background-color:rgb(39, 103, 177) ;
+}
+

@@ -1,0 +1,50 @@
+<link id = darkmodeToggle rel ="stylesheet" href="Style.css">
+<meta name="viewport" content="width=device-width, intial-scale=">
+<title>Team5//Settings</title>
+
+<script>
+    function darkmodeToggle() {
+    var darkmodeToggle = document.getElementsByTagName('link')[0];
+    if (darkmodeToggle.getAttribute('href') = 'Style.css') {
+        darkmodeToggle.setAttribute('href, StyleDarkmode.css');
+    }
+    else {
+        darkmodeToggle.setAttribute('href, Style.css');
+    }
+
+    }
+</script>
+
+
+
+
+
+<html>
+
+    <head>
+    </head>
+     
+
+    <body>
+        <header>
+            <h1 class="headerFont">//Settings</h1>
+            <nav>
+                <ul class="pillNav">
+                    <li><a href="Home.html">//Back To Home</a></li>
+                    <li><a href="#">//Account</a></li>
+                    <li><a href="#">//On Sale</a></li>
+                    <li><a href="#">//Browse</a></li>
+                    <li><a href="#">//Search</a></li>
+                    
+
+                </ul>
+            </nav>
+            <a class ="basketBtn" href="#"><button>//Basket</button></a>
+        </header>
+
+
+        <button onclick="darkmodeToggle()">Switch</button>
+
+    
+    </body>
+</html>
