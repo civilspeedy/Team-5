@@ -44,4 +44,6 @@ function generateKey(){
             true,
             ["encrypt", "decrypt"]
     );
+    return keyPair
 }
+console.log(generateKey());
