@@ -1,0 +1,5 @@
+26/10/22: Redid the basic css set up and rejigged the html a fair bit, trying to get a nav bar at the top working, Havent decided on colours to work with yet but that'll come later
+
+27/10/22: Added emojis and cleaned up nav bar, might remove emojis for more monochromatic look
+27/10/22: Removed emojis and fixed padding issues by upping the padding to 50px on pillNav a, as well set padding to 7 on the * class
+27/20/22: Added each section their own page with consistent styling
