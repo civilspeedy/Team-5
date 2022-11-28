@@ -20,3 +20,14 @@ function writeToJson(jsonFile, data){
 
 }
 console.log(generateKey());
+
+function readJson(jsonFile){
+    const fs = require('fs')
+    fs.readFile('./json/products.json', 'utf8', (err, jsonString) => {
+        if (err){
+            console.log("file read failed:", err)
+            return
+        }
+        return jsonString
+    })
+}
