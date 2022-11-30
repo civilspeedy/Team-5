@@ -17,14 +17,14 @@ function populate(){
     for (let product in products){
         var productData = products[product]; //I'm not sure why but the for in loop is only returning the location value of the objects so this is a temporary fix
         var name = productData.name.toString
-        //pageProducts += "<div class='product'><img src=" + productData.image + "><br>\n<p class='productName'>" + productData.name + "</p><br>\n<p class='productPrice'>£" + productData.price + "</p><br>\n<button name='product button' onclick='addToBasket("+name+")'>Add to Basket</button></div>";
+        pageProducts += "<div class='product'><img src=" + productData.image + "><br>\n<p class='productName'>" + productData.name + "</p><br>\n<p class='productPrice'>£" + productData.price + "</p><br>\n<button name='product button' onclick='addToBasket("+name+")'>Add to Basket</button></div>";
     }
     productDisplay.innerHTML = pageProducts;
 }
 
 /**This function is meant to fetch a json file */
-function getfile(filename){
-    fetch("./Back-End/json/products.json")
+function getfile(){
+    fetch("../Back-End/json/products.json")
         .then((response) => response.json())
         .then((json) => console.log(json));
 }
@@ -34,3 +34,4 @@ function addToBasket(selectedProduct){
 }
 
 populate();
+getfile();
