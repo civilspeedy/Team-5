@@ -35,3 +35,10 @@ function addToBasket(selectedProduct){
 
 populate();
 getfile();
+
+/**function to get the variables from the search bar and set it to a js variable for later use DOESNT WORK YET, Gets set as blank*/
+function getSearchTerm(){
+    var searchTerm = document.getElementById("searchButton").value;
+    console.log(searchTerm," has been set to js variable 'searchTerm'" );
+    console.log(searchTerm);
+}

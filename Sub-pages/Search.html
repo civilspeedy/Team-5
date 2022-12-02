@@ -1,4 +1,5 @@
 <link rel ="stylesheet" href="../Style.css">
+<script src="../scripting.js"></script>
 <meta name="viewport" content="width=device-width, intial-scale=">
 
 
@@ -24,9 +25,9 @@
             <a class ="basketBtn" href="#"><button>Basket</button></a>
         </header>
 
-        <<form action="/form/submit" method="GET">
+        <form action="/form/submit" method="GET">
             <input type="text" name="text" class="search" placeholder="Search for somthing here!">
-            <input type="submit" name="submit" id="submitSearch" value="Search">
           </form>
+          <button class="search" id = "searchButton" onclick="getSearchTerm()">Search!</button>
     </body>
 </html>
