@@ -39,7 +39,19 @@ getfile();
 /**function to get the variables from the search bar and set it to a js variable called searchTerm for later use -charliek*/
 function getSearchTerm(){
     var searchTerm = document.getElementById("searchBox").value;
-    console.log(searchTerm,"has been set to js variable 'searchTerm'" );
-    alert("used for testing, check console for more info");
-
+    console.log(searchTerm," has been set to js variable 'searchTerm'" );
 }
+
+var textFile = null;
+makeTextFile = function(text) {
+    var data = new Blob([text], {type:'text/plain'})
+
+    if (textFile !== null){
+        window.URL.revokeObjectURL(textFile);
+    }
+    textFile = window.URL.createObjectURL(data);
+
+    return textFile;
+};
+
+console.log(makeTextFile());
