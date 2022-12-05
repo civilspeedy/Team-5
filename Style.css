@@ -85,10 +85,17 @@ button:hover {
 }
 
 .searchBox {
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 150px;
+    width: 500px;
+    margin-left: 35%;
+    margin-top: 180px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.searchButton {
+    width: 250px;
+    margin-left: 42.5%;
+    margin-top: 80px;
     text-align: center;
 }
 
