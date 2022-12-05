@@ -1,6 +1,34 @@
-<link rel = "stylesheet" href="../Style.css">
+<link rel ="stylesheet" href="../Style.css">
+<script src="../scripting.js"></script>
 <meta name="viewport" content="width=device-width, intial-scale=">
-<title>Team5//Login</title> 
+
+
 <html>
-    <head></head>
+
+    <head>
+    </head>
+     
+
+    <body>
+        <header>
+            <h1 class="headerFont">//Acccount</h1>
+            <nav>
+                <ul class="pillNav">
+                    <li><a href="index.html">Back To Home</a></li>
+                    <li><a href="#">On Sale</a></li>
+                    <li><a href="#">Browse</a></li>
+                    <li><a href="Sub-pages/Search.html">Search</a></li>
+                    <li><a href="Settings.html">Site Settings</a></li>
+
+                </ul>
+            </nav>
+            <a class ="basketBtn" href="#"><button>Basket</button></a>
+        </header>
+
+        <!--pretty sure the form action is uneeded but its staying for now-->
+        <form action="/form/submit" method="GET">
+            <input type="text" name="text" class="search" id="searchBox" placeholder="Search for somthing here!">
+        </form> <!--placeholder box before login stuff is started-->
+          <button class="search" id = "searchButton" onclick="getSearchTerm()">Search!</button>
+    </body>
 </html>
