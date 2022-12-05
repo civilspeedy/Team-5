@@ -40,7 +40,6 @@ getfile();
 function getSearchTerm(){
     var searchTerm = document.getElementById("searchBox").value;
     console.log(searchTerm," has been set to js variable 'searchTerm'" );
-
 }
 
 var textFile = null;
