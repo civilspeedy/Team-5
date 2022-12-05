@@ -1,21 +1,12 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
+from flask import *
+import os 
 
-hostName = "localhost"
-serverPort = 8080
 
-class Server(BaseHTTPRequestHandler):
-    def do_Get(self):
-        self.send_response(200)
-        self.wfile.write(bytes("/index.html"))
+app = Flask(__name__)
+
+@app.route('/')
+def main_page():
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    web_Server = HTTPServer((hostName, serverPort), Server)
-    print(hostName, serverPort)
-
-    try:
-        web_Server.serve_forever()
-    except KeyboardInterrupt:
-        pass
-    web_Server.server_close()
-    print("Server stopped.")
+    app.run()
