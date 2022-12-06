@@ -1,6 +1,6 @@
 from flask import *
 import sqlite3 
-
+from cryptography.fernet import Fernet
 
 app = Flask(__name__)
 
