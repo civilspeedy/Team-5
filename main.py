@@ -1,6 +1,6 @@
 from flask import *
 import sqlite3 
-from cryptography.fernet import Fernet
+from cryptography.fernet 
 
 app = Flask(__name__)
 
@@ -61,5 +61,11 @@ def create_tables():
     conn.commit()#Changes are commited
     conn.close()#Connection to DB is closed
 
+def store_user(username, password):
+    conn = sqlite3.connect("databases/data.db")
+    c = conn.cursor()
+
+    c.execute("""
+    INSERT INTO Users(Username, Password) VALUES (?, ?)""" (username, password))
 if __name__ == "__main__":
     app.run()
