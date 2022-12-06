@@ -10,7 +10,6 @@ def main_page():
     return render_template("index.html")
 
 
-
 def create_tables():
     """This function will exicute SQL queries to create the required tables."""
     conn = sqlite3.connect("databases/data.db")
