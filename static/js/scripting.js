@@ -3,7 +3,7 @@ let products = [{
     name: "Lamp",
  price: 59.99,
  quantity: 10,
- image: "Images/lamp.jpg"},
+ image: "../Images/lamp.jpg"},
 {name: "desk",
 price: 120.99,
 quantity: 5,
