@@ -1,6 +1,20 @@
 from flask import *
 import sqlite3 
-from cryptography.fernet 
+from cryptography.fernet import Fernet
+
+def encryption(string):
+    """Encrypts entered string"""
+    key = Fernet.generate_key()
+    fernet = Fernet(key)
+    encoded_message = fernet.encrypt(string.encode())
+    print(encoded_message)
+    decoded_message = fernet.decrypt(encoded_message).decode()
+    print(decoded_message)
+
+def decryption(string):
+    key = Fernet.generate_key()
+    fernet = Fernet(key)
+    
 
 app = Flask(__name__)
 
@@ -66,6 +80,7 @@ def store_user(username, password):
     c = conn.cursor()
 
     c.execute("""
-    INSERT INTO Users(Username, Password) VALUES (?, ?)""" (username, password))
+    INSERT INTO Users(Username, Password) VALUES (?, ?)""", (username, password))
+
 if __name__ == "__main__":
-    app.run()
+    encryption("hello")
