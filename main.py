@@ -24,6 +24,14 @@ def main_page():
     return render_template("index.html")
 
 
+@app.route("/settings")
+def render_settings():
+    return render_template("Settings.html")
+
+@app.route("/login")
+def render_login():
+    return render_template("login.html")
+
 def create_tables():
     """This function will exicute SQL queries to create the required tables."""
     conn = sqlite3.connect("databases/data.db")#Connection to DB is made
@@ -118,5 +126,33 @@ def store_ordered_products(order_id, user_id, product_name, price, quantity):
     print("Query Successful")
 
 
+def store_products(product_name, price, quantity, img_address):
+    """Inserts product data into Products table"""
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
+    c = conn.cursor()
+
+    c.execute("""
+    INSERT INTO Products(Product_Name, Price, Quantity, Img_address)
+    VALUES(?, ?, ?, ?)""", (product_name, price, quantity, img_address))
+
+    conn.commit()#Changes are commited
+    conn.close()#Connection to DB is closed
+    print("Query Successful")
+
+
+def store_user_orders(user_id, arrival_time, status):
+    """Inserts order data into User_Orders table"""
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
+    c = conn.cursor()
+
+    c.execute("""
+    INSERT INTO User_Orders(User_ID, Arrival_Time, Status)
+    VALUES (?, ?, ?)""", (user_id, arrival_time, status))
+
+    conn.commit()#Changes are commited
+    conn.close()#Connection to DB is closed
+    print("Query Successful")
+
 if __name__ == "__main__":
-    #app.run()
+    app.run()
+    print("Done!")

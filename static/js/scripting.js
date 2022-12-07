@@ -1,14 +1,13 @@
 let products = [{
-
     name: "Lamp",
- price: 59.99,
- quantity: 10,
- image: "../Images/lamp.jpg"},
-{name: "desk",
-price: 120.99,
-quantity: 5,
-image: "desk.png"
-}]; //can't get json reading working yet so this is test data for now
+    price: 59.99,
+    quantity: 10,
+    image: "../Images/lamp.jpg"},
+{
+    name: "desk",
+    price: 120.99,
+    quantity: 5,
+    image: "desk.png"}]; //can't get json reading working yet so this is test data for now
 
 /**This function will fill the page with products from datastore */
 function populate(){    
@@ -22,19 +21,6 @@ function populate(){
     productDisplay.innerHTML = pageProducts;
 }
 
-/**This function is meant to fetch a json file */
-function getfile(){
-    fetch("../Back-End/json/products.json")
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-}
-/**this function will eventually add items to the basket but at the moment the function causes an error stating there is a loose } at line 2 of index.html */
-function addToBasket(selectedProduct){
-    console.log(selectedProduct);
-}
-
-populate();
-getfile();
 
 /**function to get the variables from the search bar and set it to a js variable called searchTerm for later use -charliek*/
 function getSearchTerm(){
@@ -42,16 +28,8 @@ function getSearchTerm(){
     console.log(searchTerm," has been set to js variable 'searchTerm'" );
 }
 
-var textFile = null;
-makeTextFile = function(text) {
-    var data = new Blob([text], {type:'text/plain'})
-
-    if (textFile !== null){
-        window.URL.revokeObjectURL(textFile);
-    }
-    textFile = window.URL.createObjectURL(data);
-
-    return textFile;
-};
-
-console.log(makeTextFile());
+function getPage(page){
+    let request = new XMLHttpRequest()
+    request.open('GET', "/"+page)
+    request.send()
+}
