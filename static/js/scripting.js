@@ -27,9 +27,3 @@ function getSearchTerm(){
     var searchTerm = document.getElementById("searchBox").value;
     console.log(searchTerm," has been set to js variable 'searchTerm'" );
 }
-
-function getPage(page){
-    let request = new XMLHttpRequest()
-    request.open('GET', "/"+page)
-    request.send()
-}

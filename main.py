@@ -26,11 +26,19 @@ def main_page():
 
 @app.route("/settings")
 def render_settings():
+    """Renders settings template"""
     return render_template("Settings.html")
+
 
 @app.route("/login")
 def render_login():
+    """Renders login template"""
     return render_template("login.html")
+
+
+@app.route("/account")
+def render_account():
+    return render_template("account.html")
 
 def create_tables():
     """This function will exicute SQL queries to create the required tables."""
