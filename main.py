@@ -26,7 +26,7 @@ def main_page():
 
 def create_tables():
     """This function will exicute SQL queries to create the required tables."""
-    conn = sqlite3.connect("databases/data.db")
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
     c = conn.cursor()
 
     #Users table is created
@@ -59,7 +59,8 @@ def create_tables():
     #Order_Products table is created
     c.execute("""
     CREATE TABLE Ordered_Products(
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Order_ID INTEGER PRIMARY KEY,
+        User_ID INTEGER,
         Product_Name VARCHAR(20),
         Price DOUBLE,
         Quantity INTEGER);""")
@@ -89,5 +90,33 @@ def store_user(username, password):
     print("Query Successful")
 
 
+def store_delivery_address(user_id, order_id, house_number, road, county, postcode):
+    """Inserts passed address data to delivery address table"""
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
+    c = conn.cursor()
+
+    c.execute("""
+    INSERT INTO Delivery_Address(User_Id, Order_ID, House_Number, Road, County, Postcode) 
+    VALUES(?, ?, ?, ?, ?, ?)""", (user_id, order_id, house_number, road, county, postcode))
+
+    conn.commit()#Changes are commited
+    conn.close()#Connection to DB is closed
+    print("Query Successful")
+
+
+def store_ordered_products(order_id, user_id, product_name, price, quantity):
+    """Inserts order data into Ordered_Products table"""
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
+    c = conn.cursor()
+
+    c.execute("""
+    INSERT INTO Ordered_Products(Order_ID, User_ID, Product_Name, Price, Quantity)
+    VALUES(?, ?, ?, ?, ?)""", (order_id, user_id, product_name, price, quantity))
+
+    conn.commit()#Changes are commited
+    conn.close()#Connection to DB is closed
+    print("Query Successful")
+
+
 if __name__ == "__main__":
-    store_user("Charlie", "test")
+    #app.run()
