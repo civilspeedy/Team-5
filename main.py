@@ -1,22 +1,22 @@
 from flask import *
 import sqlite3 
-from cryptography.fernet import Fernet
+import hashlib 
 
-def encryption(string):
-    """Encrypts entered string"""
-    key = Fernet.generate_key()
-    fernet = Fernet(key)
-    encoded_message = fernet.encrypt(string.encode())
-    print(encoded_message)
-    decoded_message = fernet.decrypt(encoded_message).decode()
-    print(decoded_message)
-
-def decryption(string):
-    key = Fernet.generate_key()
-    fernet = Fernet(key)
-    
 
 app = Flask(__name__)
+
+
+def hash_string(string):
+    """Will hash input string and return it"""
+    return hashlib.sha256(string.encode()).hexdigest()
+
+
+def compare(item_1, item_2):
+    """Compares two items and returns True or False depending on if they match"""
+    if item_1 == item_2:
+        return True
+    return False
+
 
 @app.route('/')
 def main_page():
@@ -75,12 +75,19 @@ def create_tables():
     conn.commit()#Changes are commited
     conn.close()#Connection to DB is closed
 
+
 def store_user(username, password):
     conn = sqlite3.connect("databases/data.db")
     c = conn.cursor()
 
+    #Username and A hashed password are inserted into database via SQL
     c.execute("""
-    INSERT INTO Users(Username, Password) VALUES (?, ?)""", (username, password))
+    INSERT INTO Users(Username, Password) VALUES (?, ?)""", (username, hash_string(password)))
+    
+    conn.commit()#Changes are commited
+    conn.close()#Connection to DB is closed
+    print("Query Successful")
+
 
 if __name__ == "__main__":
-    app.run()
+    store_user("Charlie", "test")
