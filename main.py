@@ -83,4 +83,4 @@ def store_user(username, password):
     INSERT INTO Users(Username, Password) VALUES (?, ?)""", (username, password))
 
 if __name__ == "__main__":
-    encryption("hello")
+    app.run()

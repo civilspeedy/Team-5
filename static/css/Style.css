@@ -111,3 +111,24 @@ button:hover {
     border-radius: 10px;
     padding: 1%;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 50px;
+    
+  }
+  
+  .grid-item {
+    font-family: 'Bebas Neue', cursive;
+    background-color: rgba(255, 255, 255);
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .Show-results-label {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+  }
