@@ -1,5 +1,5 @@
-<link rel ="stylesheet" href="../Style.css">
-<script src="../scripting.js"></script>
+<link rel ="stylesheet" href="../static/css/Style.css">
+<script src="../static\js\scripting.js"></script>
 <meta name="viewport" content="width=device-width, intial-scale=">
 
 
@@ -27,8 +27,9 @@
 
         <!--pretty sure the form action is uneeded but its staying for now-->
         <form action="/form/submit" method="GET">
-            <input type="text" name="text" class="search" id="searchBox" placeholder="Search for somthing here!">
+            <input type="text" name="text" class="searchBox" id="usernameBox" placeholder="Enter your username here">
+            <input type="text" name="text" class="searchBox" id="passwordBox" placeholder="Enter your password here">
         </form> <!--placeholder box before login stuff is started-->
-          <button class="search" id = "searchButton" onclick="getSearchTerm()">Search!</button>
+          <button class="searchButton" id = "loginButton" onclick="login()">login</button>
     </body>
 </html>
