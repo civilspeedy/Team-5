@@ -5,17 +5,10 @@ import hashlib
 
 app = Flask(__name__)
 
-
+ 
 def hash_string(string):
     """Will hash input string and return it"""
     return hashlib.sha256(string.encode()).hexdigest()
-
-
-def compare(item_1, item_2):
-    """Compares two items and returns True or False depending on if they match"""
-    if item_1 == item_2:
-        return True
-    return False
 
 
 @app.route('/')
@@ -39,6 +32,7 @@ def render_login():
 @app.route("/account")
 def render_account():
     return render_template("account.html")
+
 
 def create_tables():
     """This function will exicute SQL queries to create the required tables."""
@@ -160,6 +154,30 @@ def store_user_orders(user_id, arrival_time, status):
     conn.commit()#Changes are commited
     conn.close()#Connection to DB is closed
     print("Query Successful")
+
+
+app.route('/api/signUp', methods=['POST'])
+def sign_up():
+    """Gets user login info and stores it"""
+    store_user(request.args.get("username"), request.args.get("password"))
+    return make_response(jsonify({"result": "ok"}, 200))
+
+
+@app.route('/api/login', methods=['GET'])
+def login():
+    """Authenticates user login info"""
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
+    c = conn.cursor()
+
+    c.execute("""
+    SELECT Password FROM Users WHERE Username = ?""", request.args.get("username"))
+    password = c.fetchone()
+    conn.close()
+
+    if hash_string(request.args.get("password")) == password:
+        return make_response(jsonify({"result": "authenticated"}, 200))
+    else:
+        return make_response(jsonify({"result": "failure"}, 400))
 
 
 if __name__ == "__main__":

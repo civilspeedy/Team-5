@@ -27,3 +27,16 @@ function getSearchTerm(){
     var searchTerm = document.getElementById("searchBox").value;
     console.log(searchTerm," has been set to js variable 'searchTerm'" );
 }
+
+function signUp(){
+    let request = new XMLHttpRequest();
+    var package = "/api/signUp?username=" + document.getElementById("username").value + "&password=" +document.getElementById("password").value
+    
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            console.log(JSON.parse(this.responseText));
+        }
+        console.log(JSON.parse(this.responseText));
+    }
+    request.open('POST', package, true);
+}
