@@ -132,3 +132,10 @@ button:hover {
     font-family: 'Bebas Neue', cursive;
     font-size: 30px;
   }
+
+  .createAccountButton {
+    width: 250px;
+    margin-left: 42.5%;
+    margin-top: 40px;
+    text-align: center;
+}
