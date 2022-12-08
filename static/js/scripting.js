@@ -38,7 +38,7 @@ function signUp(){
         }
         console.log(JSON.parse(this.responseText));
     }
-    request.open('POST', package, true);
+    request.open('GET', package, true);
 }
 
 function login(){
@@ -47,4 +47,22 @@ function login(){
     var passwordVar = document.getElementById("passwordBox").value;
     console.log(usernameVar,"has been set to js variable 'username'");
     console.log(passwordVar,"has been set to js variable 'password'");
+}
+
+function getSearchTerm(){
+    searchItem = document.getElementById('searchBox').value;//gets what the user has entered into search box
+
+    let request = new XMLHttpRequest();
+    var package = "/api/getSearchTerm?term=" + searchItem;
+    
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            console.log(JSON.parse(this.responseText));
+        }
+        else if (this.status == 400){
+            console.log("Failure");
+        }
+    }
+    request.open('GET', package, true);
+    request.send();
 }
