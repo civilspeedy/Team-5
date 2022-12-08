@@ -38,5 +38,23 @@ function signUp(){
         }
         console.log(JSON.parse(this.responseText));
     }
-    request.open('POST', package, true);
+    request.open('GET', package, true);
+}
+
+function getSearchTerm(){
+    searchItem = document.getElementById('searchBox').value;//gets what the user has entered into search box
+
+    let request = new XMLHttpRequest();
+    var package = "/api/getSearchTerm?term=" + searchItem;
+    
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            console.log(JSON.parse(this.responseText));
+        }
+        else if (this.status == 400){
+            console.log("Failure");
+        }
+    }
+    request.open('GET', package, true);
+    request.send();
 }

@@ -16,23 +16,31 @@ def main_page():
     """Renders the main template."""
     return render_template("index.html")
 
-
 @app.route("/settings")
 def render_settings():
     """Renders settings template"""
     return render_template("Settings.html")
-
 
 @app.route("/login")
 def render_login():
     """Renders login template"""
     return render_template("login.html")
 
-
 @app.route("/account")
 def render_account():
     return render_template("account.html")
 
+@app.route("/onSale")
+def render_on_sale():
+    return render_template("on sale.html")
+
+@app.route("/browse")
+def render_browse():
+    return render_template("browse.html")
+
+@app.route("/search")
+def render_search():
+    return render_template("search.html")
 
 def create_tables():
     """This function will exicute SQL queries to create the required tables."""
@@ -156,7 +164,7 @@ def store_user_orders(user_id, arrival_time, status):
     print("Query Successful")
 
 
-app.route('/api/signUp', methods=['POST'])
+app.route('/api/signUp', methods=['GET'])
 def sign_up():
     """Gets user login info and stores it"""
     store_user(request.args.get("username"), request.args.get("password"))
@@ -180,6 +188,25 @@ def login():
         return make_response(jsonify({"result": "failure"}, 400))
 
 
+@app.route('/api/getSearchTerm', methods=['GET'])
+def get_search_term():
+    #search_term = request.args.get("term")
+    search_term = "Lamp"
+    neutralised_term = f"{search_term[0].upper()}{search_term[1:].lower()}"
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
+    c = conn.cursor()
+
+    c.execute("""SELECT * FROM Products WHERE Product_Name = ?""", (neutralised_term,))
+    items = c.fetchall()
+    print(items)
+    conn.close()
+    if items == "[]":
+        return make_response(jsonify({"result": "failure"}, 400))
+    else:
+        return make_response(jsonify({"result": "ok"}, 200, items))
+
+
 if __name__ == "__main__":
-    app.run()
+    #app.run()
+    get_search_term()
     print("Done!")
