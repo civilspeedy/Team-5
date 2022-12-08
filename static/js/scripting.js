@@ -40,3 +40,11 @@ function signUp(){
     }
     request.open('POST', package, true);
 }
+
+function login(){
+    
+    var usernameVar = document.getElementById("usernameBox").value;
+    var passwordVar = document.getElementById("passwordBox").value;
+    console.log(usernameVar,"has been set to js variable 'username'");
+    console.log(passwordVar,"has been set to js variable 'password'");
+}
