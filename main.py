@@ -161,6 +161,7 @@ def store_user_orders(user_id, arrival_time, status):
     conn.close()#Connection to DB is closed
     print("Query Successful")
 
+
 if __name__ == "__main__":
     app.run()
     print("Done!")
