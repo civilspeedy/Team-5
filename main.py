@@ -5,7 +5,37 @@ import hashlib
 
 app = Flask(__name__)
 
- 
+#For populating Database
+list_of_items = (["Lamp", 50.00, 10, "lamp.jpg"], 
+["Desk", 120.00, 5, "desk.jpg"], 
+["Hammer", 10.00, 50, "hammer.jpg"], 
+["Pencils", 2.00, 132, "pencil.jpg"], 
+["Towel", 15.00, 52, "towel.jpg"], 
+["Computer Monitor", 120.00, 15, "monitor.jpg"], 
+["Computer", 300.00, 10, "computer.jpg"], 
+["Smart Phone", 200.00, 11, "phone.jpg"], 
+["Digit Clock", 50.00, 28, "clock.jpg"], 
+["Keyboard", 25.00, 30, "keyboard.jpg"], 
+["Map of Talbot Campus", 50.00, 10, "map.jpg"],
+["Sea Monkeys", 8.00, 700, "seamonkeys.jpg"], 
+["Bird feeder", 10.00, 50, "tweet.jpg"], 
+["Lorax DVD", 29.99, 100, "Lorax.jpg"], 
+["Model Coconut",70.00, 5, "tropical.jpg"], 
+["fish tank", 300.00, 12, "fish.jpg"], 
+["Dog Toy", 12.00, 35, "dogToy.jpg"], 
+["JavaScript for Dummies", 32.99, 100, "book.jpg"], 
+["Laptop",250.00, 12, "laptop.jpg"], 
+["Camera", 200.00, 10, "camera.jpg"])
+
+
+def populate_db():
+    """For filling database with items"""
+    print(list_of_items)
+    for product in list_of_items:
+        store_products(product[0], product[1], product[2], product[3])
+        print(product[0], "added")
+
+
 def hash_string(string):
     """Will hash input string and return it"""
     return hashlib.sha256(string.encode()).hexdigest()
@@ -208,5 +238,6 @@ def get_search_term():
 
 if __name__ == "__main__":
     #app.run()
-    get_search_term()
+    create_tables()
+    populate_db()
     print("Done!")
