@@ -236,8 +236,18 @@ def get_search_term():
         return make_response(jsonify({"result": "ok"}, 200, items))
 
 
+@app.route('/api/getAllProducts')
+def get_all_products():
+    """Returns all elements in products table to API"""
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
+    c = conn.cursor()
+
+    c.execute("""SELECT * FROM Products""")
+    items = c.fetchall()
+    conn.close()
+    return make_response(jsonify({"result": "ok"}, 200, items))
+
+
 if __name__ == "__main__":
-    #app.run()
-    create_tables()
-    populate_db()
-    print("Done!")
+    app.run()
+    

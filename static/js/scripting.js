@@ -1,13 +1,16 @@
-let products = [{
-    name: "Lamp",
-    price: 59.99,
-    quantity: 10,
-    image: "../Images/lamp.jpg"},
-{
-    name: "desk",
-    price: 120.99,
-    quantity: 5,
-    image: "desk.png"}]; //can't get json reading working yet so this is test data for now
+function getAllProducts(){
+    let request = new XMLHttpRequest();
+    var package = "/api/getAllProducts"
+
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            console.log(JSON.parse(this.responseText));
+        }
+        else{
+            console.log("failure")
+        }
+    }
+}
 
 /**This function will fill the page with products from datastore */
 function populate(){    
@@ -39,6 +42,7 @@ function signUp(){
         console.log(JSON.parse(this.responseText));
     }
     request.open('GET', package, true);
+    request.send();
 }
 
 function login(){
