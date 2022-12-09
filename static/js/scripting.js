@@ -4,12 +4,14 @@ function getAllProducts(){
 
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
-            console.log(JSON.parse(this.responseText));
+            console.log(JSON.parse(this.responseText)[2]);
         }
-        else{
-            console.log("failure")
+        else if (this.status == 400){
+            console.log("failure");
         }
     }
+    request.open('GET', package, true);
+    request.send();
 }
 
 /**This function will fill the page with products from datastore */
