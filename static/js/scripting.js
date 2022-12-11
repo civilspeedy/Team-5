@@ -74,7 +74,20 @@ function login(){
     
     var usernameVar = document.getElementById("usernameBox").value;
     var passwordVar = document.getElementById("passwordBox").value;
-    console.log(usernameVar,"has been set to js variable 'username'");
-    console.log(passwordVar,"has been set to js variable 'password'");
+
+    let request = new XMLHttpRequest();
+    var package = "api/login?username=" + usernameVar + "&password=" + passwordVar
+
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            alert("You are logged in");
+        }
+        if (this.status = 400){
+            alert("Incorrect Login")
+        }
+    }
+
+    request.open('GET', package, true);
+    request.send();
 }
 
