@@ -30,7 +30,19 @@ function getAllProducts(){
 /**function to get the variables from the search bar and set it to a js variable called searchTerm for later use -charliek*/
 function getSearchTerm(){
     var searchTerm = document.getElementById("searchBox").value;
-    console.log(searchTerm," has been set to js variable 'searchTerm'" );
+    let request = new XMLHttpRequest();
+    var package = "/api/getSearchTerm?term?=" + searchTerm;
+
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            console.log(JSON.parse(this.responseText));
+        }
+        else if (this.status == 400){
+            console.log(JSON.parse(this.responseText));
+        }
+    }
+    request.open('GET', package, true);
+    request.send();
 }
 
 function signUp(){
@@ -41,7 +53,9 @@ function signUp(){
         if (this.readyState == 4 && this.status == 200){
             console.log(JSON.parse(this.responseText));
         }
-        console.log(JSON.parse(this.responseText));
+        else if (this.status == 400){
+            console.log(JSON.parse(this.responseText));
+        }
     }
     request.open('GET', package, true);
     request.send();
@@ -72,7 +86,3 @@ function getSearchTerm(){
     request.open('GET', package, true);
     request.send();
 }
-
-
-//Things to be called on open
-getAllProducts();

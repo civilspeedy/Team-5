@@ -220,8 +220,7 @@ def login():
 
 @app.route('/api/getSearchTerm', methods=['GET'])
 def get_search_term():
-    #search_term = request.args.get("term")
-    search_term = "Lamp"
+    search_term = request.args.get("term")
     neutralised_term = f"{search_term[0].upper()}{search_term[1:].lower()}"
     conn = sqlite3.connect("databases/data.db")#Connection to DB is made
     c = conn.cursor()
@@ -230,7 +229,7 @@ def get_search_term():
     items = c.fetchall()
     print(items)
     conn.close()
-    if items == "[]":
+    if items == []:
         return make_response(jsonify({"result": "failure"}, 400))
     else:
         return make_response(jsonify({"result": "ok"}, 200, items))
