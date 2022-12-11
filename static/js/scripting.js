@@ -8,11 +8,10 @@ function getAllProducts(){
             var insert = ""//Injecting HTML
             var count = 0;
 
-
             for (const product of productArray){
                 count++;
                 console.log(product);
-                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='"+product[3]+"'></img>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='static/images/"+product[3]+"'>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
             }
             return document.getElementById("products").innerHTML = insert;
         }
@@ -43,7 +42,7 @@ function getSearchTerm(){
             for (const product of productArray){
                 console.log(product);
                 count++;
-                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='"+product[3]+"'></img>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='static/images/"+product[3]+"'\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
             }
             return document.getElementById("results").innerHTML = insert;
         }
@@ -75,7 +74,20 @@ function login(){
     
     var usernameVar = document.getElementById("usernameBox").value;
     var passwordVar = document.getElementById("passwordBox").value;
-    console.log(usernameVar,"has been set to js variable 'username'");
-    console.log(passwordVar,"has been set to js variable 'password'");
+
+    let request = new XMLHttpRequest();
+    var package = "api/login?username=" + usernameVar + "&password=" + passwordVar
+
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            alert("You are logged in");
+        }
+        if (this.status = 400){
+            alert("Incorrect Login")
+        }
+    }
+
+    request.open('GET', package, true);
+    request.send();
 }
 
