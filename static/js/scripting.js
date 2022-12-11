@@ -42,7 +42,7 @@ function getSearchTerm(){
             for (const product of productArray){
                 console.log(product);
                 count++;
-                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='"+product[3]+"'></img>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='static/images/"+product[3]+"'\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
             }
             return document.getElementById("results").innerHTML = insert;
         }
