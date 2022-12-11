@@ -37,5 +37,19 @@ session_start();
         </form> <!--placeholder box before login stuff is started-->
         <button class="searchButton" id = "loginButton" onclick="login()">login</button>
         <button class="searchButton" id = "createAccountButton" href = "CreateAccount">Create Account</button>
+
+        <!--IF LOG IN WORKS THEN THIS-->
+        <?php
+        //set login variable
+        $_SESSION["userLoggedIn"] = "yes";
+        ?>
+        <!--ELSE THEN THIS-->
+        <?php
+        //set login variable
+        $_SESSION["userLoggedIn"] = "no";
+        ?>
+
+
+
     </body>
 </html>
