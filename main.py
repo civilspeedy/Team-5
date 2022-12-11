@@ -72,6 +72,10 @@ def render_browse():
 def render_search():
     return render_template("Search.html")
 
+@app.route('/createAccount')
+def render_create_account():
+    return render_template("CreateAccount.html")
+
 def create_tables():
     """This function will exicute SQL queries to create the required tables."""
     conn = sqlite3.connect("databases/data.db")#Connection to DB is made
