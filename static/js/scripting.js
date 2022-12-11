@@ -8,11 +8,10 @@ function getAllProducts(){
             var insert = ""//Injecting HTML
             var count = 0;
 
-
             for (const product of productArray){
                 count++;
                 console.log(product);
-                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='"+product[3]+"'></img>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='static/images/"+product[3]+"'>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
             }
             return document.getElementById("products").innerHTML = insert;
         }
