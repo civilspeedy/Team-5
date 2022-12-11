@@ -70,7 +70,7 @@ def render_browse():
 
 @app.route("/search")
 def render_search():
-    return render_template("search.html")
+    return render_template("Search.html")
 
 def create_tables():
     """This function will exicute SQL queries to create the required tables."""
