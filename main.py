@@ -221,7 +221,9 @@ def login():
 @app.route('/api/getSearchTerm', methods=['GET'])
 def get_search_term():
     search_term = request.args.get("term")
+    print(search_term)
     neutralised_term = f"{search_term[0].upper()}{search_term[1:].lower()}"
+    print(f"neutral>>{neutralised_term}")
     conn = sqlite3.connect("databases/data.db")#Connection to DB is made
     c = conn.cursor()
 
