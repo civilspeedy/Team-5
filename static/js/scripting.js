@@ -4,7 +4,18 @@ function getAllProducts(){
 
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
-            console.log(JSON.parse(this.responseText)[2]);
+            var productArray = JSON.parse(this.responseText)[2];
+            var insert = ""//Injecting HTML
+            var count = 0;
+
+
+            console.log(productArray);
+            for (const product of productArray){
+                count++;
+                console.log(product);
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='"+product[3]+"'></img>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+            }
+            return document.getElementById("products").innerHTML = insert;
         }
         else if (this.status == 400){
             console.log("failure");
@@ -12,20 +23,9 @@ function getAllProducts(){
     }
     request.open('GET', package, true);
     request.send();
-}
 
-/**This function will fill the page with products from datastore */
-function populate(){    
-    let pageProducts = "";
-    var productDisplay = document.getElementById("productDisplay");
-    for (let product in products){
-        var productData = products[product]; //I'm not sure why but the for in loop is only returning the location value of the objects so this is a temporary fix
-        var name = productData.name.toString
-        pageProducts += "<div class='product'><img src=" + productData.image + "><br>\n<p class='productName'>" + productData.name + "</p><br>\n<p class='productPrice'>£" + productData.price + "</p><br>\n<button name='product button' onclick='addToBasket("+name+")'>Add to Basket</button></div>";
-    }
-    productDisplay.innerHTML = pageProducts;
-}
 
+}
 
 /**function to get the variables from the search bar and set it to a js variable called searchTerm for later use -charliek*/
 function getSearchTerm(){
@@ -72,3 +72,7 @@ function getSearchTerm(){
     request.open('GET', package, true);
     request.send();
 }
+
+
+//Things to be called on open
+getAllProducts();
