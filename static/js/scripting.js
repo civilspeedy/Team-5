@@ -40,7 +40,7 @@ function getSearchTerm(){
             var productArray = JSON.parse(this.responseText)[2];
             for (const product of productArray){
                 count++;
-                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"<br>\n<img src='static/images/"+product[3]+"'\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"<br>\n<img class='imgSize src='static/images/"+product[3]+"'\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
             }
             return document.getElementById("results").innerHTML = insert;
         }
@@ -63,8 +63,8 @@ function getFeatured(){
         if (this.readyState == 4 && this.status == 200){
             var productArray = JSON.parse(this.responseText)[2];
             for (const product of productArray){
-                count++;
-                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"<br>\n<img src='static/images/"+product[3]+"'\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+                count++; //Okay i've fixed the img sizing problems and figured out why theyre not in a grid, Grid container needs to be outside the for loop - charliek
+                insert += "<div class ='grid-container'><br><div class='grid-item' id='product"+count+"'>"+product[0]+"<br>\n<img class ='imgSize' src='static/images/"+product[3]+"'\n<br><p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div></div>";
             }
             return document.getElementById("products").innerHTML = insert;
         }

@@ -139,3 +139,8 @@ button:hover {
     margin-top: 40px;
     text-align: center;
 }
+
+  .imgSize{
+    max-width: 400px;
+    max-height: 400px;
+  }
