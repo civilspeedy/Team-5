@@ -11,7 +11,7 @@ function getAllProducts(){
             for (const product of productArray){
                 count++;
                 console.log(product);
-                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='static/images/"+product[3]+"'>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"<br>\n<img src='static/images/"+product[3]+"'>\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
             }
             return document.getElementById("products").innerHTML = insert;
         }
@@ -38,11 +38,9 @@ function getSearchTerm(){
     
         if (this.readyState == 4 && this.status == 200){
             var productArray = JSON.parse(this.responseText)[2];
-            console.log(JSON.parse(this.response));
             for (const product of productArray){
-                console.log(product);
                 count++;
-                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"\n<img src='static/images/"+product[3]+"'\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"<br>\n<img src='static/images/"+product[3]+"'\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
             }
             return document.getElementById("results").innerHTML = insert;
         }
@@ -54,16 +52,41 @@ function getSearchTerm(){
     request.send();
 }
 
+function getFeatured(){
+    let request = new XMLHttpRequest();
+    var package = "/api/getFeatured";
+    var count = 0;
+
+    request.onreadystatechange = function(){
+        var insert = "";
+
+        if (this.readyState == 4 && this.status == 200){
+            var productArray = JSON.parse(this.responseText)[2];
+            for (const product of productArray){
+                count++;
+                insert += "<div class='grid-item' id='product"+count+"'>"+product[0]+"<br>\n<img src='static/images/"+product[3]+"'\n<p>£"+product[1]+"</p>\n<button class='basketBtn' href='#'>View</button>\n</div>";
+            }
+            return document.getElementById("products").innerHTML = insert;
+        }
+        if (this.status == 400){    
+            console.log(JSON.parse(this.responseText));
+        }
+    }
+    request.open('GET', package, true);
+    request.send();
+}
+
+
 function signUp(){
     let request = new XMLHttpRequest();
     var package = "/api/signUp?username=" + document.getElementById("username").value + "&password=" +document.getElementById("password").value
     
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
-            console.log(JSON.parse(this.responseText));
+            alert("Sign Up Successful")
         }
         else if (this.status == 400){
-            console.log(JSON.parse(this.responseText));
+            alert("Sign Up Failed")
         }
     }
     request.open('GET', package, true);

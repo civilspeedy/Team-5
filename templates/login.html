@@ -21,9 +21,9 @@ session_start();
                 <ul class="pillNav">
                     <li><a href="/">Back To Home</a></li>
                     <li><a href="#">On Sale</a></li>
-                    <li><a href="#">Browse</a></li>
-                    <li><a href="Sub-pages/Search.html">Search</a></li>
-                    <li><a href="Settings.html">Site Settings</a></li>
+                    <li><a href="/browse">Browse</a></li>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/settings">Site Settings</a></li>
 
                 </ul>
             </nav>
@@ -36,7 +36,7 @@ session_start();
             <input type="text" name="text" class="searchBox" id="passwordBox" placeholder="Enter your password here">
         </form> <!--placeholder box before login stuff is started-->
         <button class="searchButton" id = "loginButton" onclick="login()">login</button>
-        <button class="searchButton" id = "createAccountButton" href = "CreateAccount">Create Account</button>
+        <button class="searchButton" id = "createAccountButton" href = "#">Create Account</button>
 
         <!--IF LOG IN WORKS THEN THIS-->
         <?php

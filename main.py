@@ -253,6 +253,19 @@ def get_all_products():
     return make_response(jsonify({"result": "ok"}, 200, items))
 
 
+@app.route("/api/getFeatured")
+def get_featured():
+    """This will return five random products to be used as the featured items"""
+    conn = sqlite3.connect("databases/data.db")#Connection to DB is made
+    c = conn.cursor()
+
+    c.execute("""
+    SELECT * FROM Products ORDER BY RANDOM() LIMIT 5""") #fetches 5 random rows
+    items = c.fetchall()
+    conn.close()
+    print(items)
+    return make_response(jsonify({"result": "ok"}, 200, items))
+    
+
 if __name__ == "__main__":
     app.run()
-    
