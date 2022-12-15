@@ -126,6 +126,7 @@ button:hover {
     padding: 20px;
     font-size: 30px;
     text-align: center;
+    border-radius: 50px;
   }
 
   .Show-results-label {

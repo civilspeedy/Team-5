@@ -20,7 +20,6 @@ session_start();
             <nav>
                 <ul class="pillNav">
                     <li><a href="/">Back To Home</a></li>
-                    <li><a href="#">On Sale</a></li>
                     <li><a href="/browse">Browse</a></li>
                     <li><a href="/search">Search</a></li>
                     <li><a href="/settings">Site Settings</a></li>
@@ -30,11 +29,10 @@ session_start();
             <a class ="basketBtn" href="#"><button>Basket</button></a>
         </header>
 
-        <!--pretty sure the form action is uneeded but its staying for now-->
         <form action="/form/submit" method="GET">
             <input type="text" name="text" class="searchBox" id="usernameBox" placeholder="Enter your username here">
             <input type="text" name="text" class="searchBox" id="passwordBox" placeholder="Enter your password here">
-        </form> <!--placeholder box before login stuff is started-->
+        </form>
         <button class="searchButton" id = "loginButton" onclick="login()">login</button>
         <button class="searchButton" id = "createAccountButton" href = "#">Create Account</button>
 

@@ -231,7 +231,7 @@ def get_search_term():
     conn = sqlite3.connect("databases/data.db")#Connection to DB is made
     c = conn.cursor()
 
-    c.execute("""SELECT * FROM Products WHERE Product_Name = ?""", (neutralised_term,))
+    c.execute("""SELECT * FROM Products WHERE Product_Name LIKE ?""", (neutralised_term,))
     items = c.fetchall()
     print(items)
     conn.close()
